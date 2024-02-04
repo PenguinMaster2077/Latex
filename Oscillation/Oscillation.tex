@@ -1,0 +1,122 @@
+\input{D:/Book-begin.tex}
+
+\usepackage{ctex}
+\begin{document}
+	\chapter{中微子振荡}	
+			\begin{GCBox}[title = 平面波本征态]{}
+				中微子质量本征态用平面波近似，具体表达式为
+					\begin{equation}
+						|\nu_i(t)\rangle
+						= e^{-\frac{i}{\hbar}P^aX_a}|\nu_i\rangle,
+					\end{equation}
+				四动量为$P^a = (E, \vec{p}\,)$；四坐标为$X^a = (t, \vec{r} \,)$；于是内积为
+					\begin{equation}
+						P^aX_a
+						= Et - pL.
+					\end{equation}
+				由于中微子质量非常小，所以可以做进一步近似
+					\begin{equation}
+						E
+						= \sqrt{m^2c^4 + p^2c^2}
+						= pc\sqrt{1 + \frac{m^2c^2}{p^2}}
+						\approx pc\left[1 + \frac{m^2c^3}{2p^2c} + \mathcal{O}\left(\frac{m^4c^4}{p^4}\right)\right],
+					\end{equation}
+				利用$E\approx pc, t = L/c$，最后中微子本征态为
+					\begin{equation}
+						|\mu_i(t)\rangle 
+						\approx e^{-i\frac{m^2_ic^3}{2\hbar E}L}|\nu_i\rangle.
+					\end{equation}
+			\end{GCBox}		
+			\begin{GCBox}[title = 二味混合]
+				考虑两味的混合，混合矩阵为
+					\begin{equation}
+						U
+						=\left(\begin{matrix}
+							c_{12} & s_{12}\\
+							-s_{12} & c_{12}
+						\end{matrix}\right),
+					\end{equation}
+				味道本征态和质量本征态的关系为
+					\begin{equation}
+						|\nu_\alpha\rangle
+						\sum_i U_{\alpha i}|\nu_i\rangle.
+					\end{equation}
+				那$\nu_e\rightarrow\nu_e$的振幅为
+					\begin{equation}
+						A_{\nu_e \rightarrow \nu_e}
+						= \langle \nu_e|\nu_e(t)\rangle
+						= \sum_{i,j} U^\dag_{ie}U_{ei}e^{-i\frac{\triangle^2_{ij}c^3}{2\hbar E}L}\langle \nu_i|\nu_j\rangle
+						= \sum_i U_{ei}U^*_{ei}e^{-i\frac{\triangle_{ij}^2c^3}{2\hbar E}L}.
+					\end{equation}
+				最后几率为
+					\begin{equation}
+						\begin{aligned}
+							P_{\nu_e \rightarrow \nu_e}
+							&= A_{\nu_e \rightarrow \nu_e}A^*_{\nu_e \rightarrow \nu_e}
+							= |U_{e1}|^4 + |U_{e2}|^4 + |U_{e1}|^2|U_{e2}|^2\left(e^{-i\frac{\triangle_{12}^2c^3}{2\hbar E}L} + e^{i\frac{\triangle_{12}^2c^3}{2\hbar E}L}\right)\\
+							&= \cos^4\theta_{12} + \sin^4\theta_{12} + 2\cos^2\theta_{12}\sin^2\theta_{12}\cos\left(\frac{\triangle_{12}^2c^3}{2\hbar E}L\right)\\
+							&= (1 - \sin^2\theta_{12})^2 + \sin^4\theta_{12} + \frac{1}{2}\sin^22\theta_{12}\cos\left(\frac{\triangle_{12}^2c^3}{2\hbar E}L\right)\\
+							&= 1 + 2\sin^4\theta_{12} - 2\sin^2\theta_{12} + \frac{1}{2}\sin^22\theta_{12} \left[1 - 2\sin^2\left(\frac{\triangle_{12}^2c^3}{2\hbar E}L\right)\right]\\
+							&= 1 + 2\sin^2\theta_{12}\left(\sin^2\theta_{12} - 1\right) + \frac{1}{2}\sin^22\theta_{12} - \sin^22\theta_{12}\sin^2\left(\frac{\triangle_{12}^2c^3}{2\hbar E}L\right)\\
+							&= 1 - \sin^22\theta_{12}\sin^2\left(\frac{\triangle_{12}^2c^3}{2\hbar E}L\right).
+						\end{aligned}
+					\end{equation}
+			\end{GCBox}
+			\begin{GCBox}[title = 三味混合]{}
+				PMNS矩阵为
+					\begin{equation}
+						\begin{aligned}
+							U
+							&= \left(\begin{matrix}
+								1 & 0 & 0\\
+								0 & c_{23} & s_{23}\\
+								0 & -s_{23} & c_{23}
+							\end{matrix}\right)
+							\left(\begin{matrix}
+								c_{13} & 0 & s_{13}e^{-i\delta}\\
+								0 & 1 & 0\\
+								-s_{13}e^{i\delta} & 0 & c_{23}
+							\end{matrix}\right)
+							\left(\begin{matrix}
+								c_{12} & s_{12} & 0\\
+								-s_{12} & c_{12} & 0\\
+								0 & 0 & 1
+							\end{matrix}\right)\\
+							&= \left(\begin{matrix}
+								c_{12}c_{13} & s_{12}c_{13} & s_{13}e^{-i\delta}\\
+								-c_{12}s_{13}s_{23}e^{i\delta} - s_{12}c_{23} & -s_{12}s_{13}s_{23}e^{i\delta} + c_{12}c_{23} & c_{12}s_{23}\\
+								-c_{12}s_{13}c_{23}e^{i\delta} + s_{12}s_{23} & -s_{12}s_{13}c_{23}e^{i\delta} - c_{12}s_{23} & c_{13}c_{23}
+							\end{matrix}\right)
+						\end{aligned}
+					\end{equation}
+				味道本征态和质量本征态的关系为
+					\begin{equation}
+						|\nu_\alpha\rangle
+						= U_{\alpha i}|\nu_i\rangle.
+					\end{equation}
+				振荡概率为
+					\begin{equation}
+						\begin{aligned}
+							P_{\alpha\rightarrow\beta}
+							&= \left|\langle\nu_\beta|\nu_\alpha\rangle\right|^2
+							= \left|\sum_{ij}U^\dag_{i\beta}U_{\alpha i}e^{-i\frac{\triangle^2_{ij}c^3}{2\hbar E}L}\langle \nu_i|\nu_j\rangle\right|^2
+							= \left|\sum_i U_{\alpha i}U_{\beta i}^*e^{-i\frac{\triangle^2_{ij}c^3}{2\hbar E}L}\right|^2\\
+							&= \sum_i |U_{\alpha i}U_{\beta i}^*|^2 + 2\sum_{i < j}Re[U_{\alpha i}U_{\beta i}^*U_{\alpha j}U_{\beta j}]\cos\left(\frac{\triangle_{ij}^2c^3}{2\hbar E}L\right) + 2\sum_{i < j}Im[U_{\alpha i}U_{\beta i}^*U_{\alpha j}U_{\beta j}]\sin\left(\frac{\triangle_{ij}^2c^3}{2\hbar E}L\right)\\
+							&= \left|\sum_i U_{\alpha i}U^*_{\beta i}\right|^2 - 4\sum_{i < j}Re[U_{\alpha i}U^*_{\beta i}U^*_{\alpha j}U_{\beta j}]\sin^2\left(\frac{\triangle_{ij}^2c^3}{4\hbar E}L\right) - 2J\sum_{k\gamma}\varepsilon_{ijk}\varepsilon_{\alpha\beta\gamma}\sin\left(\frac{\triangle_{ij}^2c^3}{2\hbar E}L\right)\\
+							&= \delta_{\alpha\beta} - 4\sum_{i < j}Re[U_{\alpha i}U^*_{\beta i}U^*_{\alpha j}U_{\beta j}]\sin^2\left(\frac{\triangle_{ij}^2c^3}{4\hbar E}L\right) + 8J\sum_\gamma \varepsilon_{\alpha\beta\gamma}\sin\left(\frac{\triangle_{13}^2c^3}{4\hbar E}L\right)\textbf{TBDDDDDDDDDD}
+						\end{aligned}
+					\end{equation}
+				于是电子中微子到电子中微子的振荡概率为
+					\begin{equation}
+						\begin{aligned}
+							&P_{\nu_e \rightarrow \nu_e}\\
+							&= 1 - 4|U_{e1}|^2|U_{e2}|^2\sin^2\left(\frac{\triangle_{12}^2c^3}{4\hbar E}L\right)
+							- 4|U_{e1}|^2|U_{e3}|^2\sin^2\left(\frac{\triangle_{13}^2c^3}{4\hbar E}L\right)
+							- 4|U_{e2}|^2|U_{e3}|^2\sin^2\left(\frac{\triangle_{23}^2c^3}{4\hbar E}L\right)\\
+							&= 1 - 4\cos^2\theta_{12}\cos^4\theta_{13}\sin^2\theta_{12}\sin^2\left(\frac{\triangle_{12}^2c^3}{4\hbar E}L\right) - 4\cos^2\theta_{12}\cos^2\theta_{13}\sin^2\theta_{13}\sin^2\left(\frac{\triangle_{13}^2c^3}{4\hbar E}L\right)\\
+							& - \sin^2\theta_{12}\cos^2\theta_{13}\sin^2\theta_{13}\sin^2\left(\frac{\triangle_{23}^2c^3}{4\hbar E}L\right)\\
+							&= 1 - \sin^22\theta_{13}\cos^4\theta_{13}\sin^2\left(\frac{\triangle_{12}^2c^3}{4\hbar E}L\right) - \sin^22\theta_{13}\left[\cos^2\theta_{12}\sin^2\left(\frac{\triangle_{13}^2c^3}{4\hbar E}L\right) + \sin^2\theta_{12}\sin^2\left(\frac{\triangle_{23}^2c^3}{4\hbar E}L\right)\right] 
+						\end{aligned}
+					\end{equation}
+			\end{GCBox}
+\end{document}
