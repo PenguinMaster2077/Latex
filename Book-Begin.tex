@@ -1,0 +1,210 @@
+%%%%
+%BCBox用于定义,需要注明的结论,BrCBox用于应用计算,NorCBox默认格式用于普通的计算结果,GCBox用于列举,RCBox用于验证,PCBox用于证明
+\documentclass{book}
+%%%%页面调整
+\usepackage{geometry}
+\geometry{a4paper, scale=0.85}
+%%%%
+%\vspace{-2cm}用来调整标题、时间、作者的间距
+\usepackage{color,amsmath,amssymb,bm,mathrsfs,gensymb}
+%%%
+\usepackage[dvipsnames,svgnames,x11names]{xcolor}
+\usepackage{tcolorbox}%这两个包捆绑使用，可以用下面代码实现有背景色的box
+%\tcblower把box分为上下两部分；\tcbline只是增加分割线
+\tcbuselibrary{skins,breakable,theorems}%丰富tcolorbox包. skins丰富文本框;breakable实现自动分页的文本框;theorems生成定理类环境
+\definecolor{HTColor-Shadow}{rgb}{0.98,0.94,0.88}%rgb最大值为255。
+\definecolor{HTColor-Deep}{rgb}{0.78,0.62,0.52}
+\definecolor{HTColor-DDeep}{rgb}{0.78,0.27,0.21}
+\definecolor{NLColor-Shadow}{rgb}{0.75,0.85,0.90}
+\definecolor{NLColor-Deep}{rgb}{0.46,0.63,0.72}
+\definecolor{NLColor-DDeep}{rgb}{0.84,0.31,0.002}
+\definecolor{XGColor-Shadow}{rgb}{0.95,0.85,0.75}
+\definecolor{XGColor-Deep}{rgb}{0.94,0.57,0.39}
+\definecolor{KLColor-Shadow}{rgb}{0.97,0.90,0.82}
+\definecolor{KLColor-Deep}{rgb}{0.72,0.78,0.48}
+\definecolor{XHColor-Shadow}{rgb}{0.97,0.87,0.86}
+\definecolor{XHColor-Deep}{rgb}{0.56,0.56,0.78}
+\newtcolorbox{PCBox}[2][]
+{	colback=XHColor-Shadow,%背景颜色
+	colframe=XHColor-Deep,%边框颜色
+	%coltitle=black!90!white,%标题颜色
+	colbacktitle = XHColor-Deep, %标题背景色
+	%fonttitle = \bfseries,
+	enhanced,
+	attach boxed title to top left = {yshift = -2mm, xshift = 5mm},%标题左右移动
+	boxed title style = {sharp corners},%标题左右移动
+	breakable=true, %跨页
+	title=#2,#1}
+\newtcolorbox{GCBox}[2][]
+{	colback=KLColor-Shadow,%背景颜色
+	colframe=KLColor-Deep,%边框颜色
+	%coltitle=black!90!white,%标题颜色
+	colbacktitle = KLColor-Deep, %标题背景色
+	%fonttitle = \bfseries,
+	enhanced,
+	attach boxed title to top left = {yshift = -2mm, xshift = 5mm},%标题左右移动
+	boxed title style = {sharp corners},%标题左右移动
+	breakable=true,
+	title=#2,#1}
+\newtcolorbox{RCBox}[2][]
+{	colback=XGColor-Shadow,%背景颜色
+	colframe=XGColor-Deep,%边框颜色
+	%coltitle=black!90!white,%标题颜色
+	colbacktitle = XGColor-Deep, %标题背景色
+	%fonttitle = \bfseries,
+	enhanced,
+	attach boxed title to top left = {yshift = -2mm, xshift = 5mm},%标题左右移动
+	boxed title style = {sharp corners},
+	breakable=true,
+	title=#2,#1}
+\newtcolorbox{BCBox}[2][]
+{	colback=NLColor-Shadow,%背景颜色
+	colframe=NLColor-Deep,%边框颜色
+	%coltitle=black!90!white,%标题颜色
+	colbacktitle = NLColor-Deep, %标题背景色
+	%fonttitle = \bfseries,
+	%opacityframe=0,边框透明度
+	%boxrule=0,%边框厚度
+	enhanced,
+	attach boxed title to top left = {yshift = -2mm, xshift = 5mm},%标题左右移动
+	boxed title style = {sharp corners},
+	breakable=true,
+	title=#2,#1}
+\newtcolorbox{BrCBox}[2][]
+{	colback=HTColor-Shadow,%背景颜色
+	colframe=HTColor-Deep,%边框颜色
+	%coltitle=black!90!white,%标题颜色
+	colbacktitle = HTColor-Deep, %标题背景色
+	%fonttitle = \bfseries,
+	enhanced,
+	attach boxed title to top left = {yshift = -2mm, xshift = 5mm},%标题左右移动
+	boxed title style = {sharp corners},%标题左右移动
+	breakable=true,
+	title=#2,#1}
+\newtcolorbox{NorCBox}[1][]
+{	notitle,
+	top={#1},
+		%colback=HTColor-Shadow,%背景颜色
+		%colframe=HTColor-Deep,%边框颜色
+		%coltitle=black!90!white,%标题颜色
+		%colbacktitle = HTColor-Deep, %标题背景色
+		%fonttitle = \bfseries,
+		opacityframe=0.5,
+		%enhanced,
+		%attach boxed title to top left = {yshift = -2mm, xshift = 5mm},%标题左右移动
+		%boxed title style = {sharp corners},%标题左右移动
+		%title=#2,#1
+		breakable=true,
+	}
+%%%
+\usepackage{bookmark}%能用part分割
+\usepackage{cancel}%大斜杠
+\newcommand{\eref}[1]{Eq.~(\ref{#1})}
+\newcommand{\efig}[1]{Fig.~\ref{#1}}
+\newcommand{\etable}[1]{Table.~\ref{#1}}
+%\newcommand{\ra}{\rangle}
+%\newcommand{\la}{\langle}
+\usepackage{diagbox}%\diagbox{1}{2}用来生成表格中的斜杠
+\usepackage{caption}%minipage实现并列表格中的标题
+\usepackage{cite}%引用文献，可以自动实现[3-50]这种引用
+\renewcommand\bibname{Reference}%修改bib的名字；article类一般默认是reference，而book则不是；
+\newcommand{\supcite}[1]{\textsuperscript{\cite{#1}}}%定义上指标的引用，但没办法读取bib文件
+%%%%%
+\usepackage{cases} %大括号
+\usepackage{textcomp}%千分号\textperthousand, 摄氏度\textcelsius
+
+\usepackage{graphicx,subfigure,float}	%图片与浮动
+%\hspace{-2cm}放在\includefigure{}前面用来调整图片位置
+\usepackage{geometry}	%设置页面
+\geometry{a4paper}
+
+\newtheorem{theorem}{Theorem}[section]	%定理	
+\newtheorem{definition}{Definition}[section]	%定义
+%\input{simplewick.sty}
+\usepackage{hyperref}%实现跳转 \href{run:地址}{文字}可以实现链接本地文件
+\usepackage{url}%PDF超链接
+\hypersetup{
+	colorlinks=true,%超链接是否带颜色
+	linkcolor=black,%目录，图表等内部链接颜色
+	citecolor=HTColor-DDeep,%修改cite的颜色
+	runcolor=NLColor-DDeep,%运行本地文件超链接的颜色
+	bookmarks=true,%生成书签
+	bookmarksnumbered=true,%书签编号
+	bookmarksopen=true%目录展开
+	}
+%%%%%缩减章节占用的空白
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+{\bfseries\Huge}
+{Chapter \, \thechapter}
+{0pt}%Chapter和标题的距离
+{}
+\titlespacing{\chapter}
+{0pt}%左右移动
+{-50pt}%上下移动
+{0pt}%离section的举例
+%%%%%
+\usepackage{listings}  %插入代码块，用lstlisting命令
+\lstset{
+	language = c++,
+	backgroundcolor = \color{yellow!10},    % 背景色：淡黄
+	basicstyle = \small\ttfamily,           % 基本样式 + 小号字体
+	rulesepcolor= \color{gray},             % 代码块边框颜色
+	breaklines = true,                  % 代码过长则换行
+	numbers = left,                     % 行号在左侧显示
+	numberstyle = \small,               % 行号字体
+	keywordstyle = \color{blue},            % 关键字颜色
+	commentstyle =\color{green!100},        % 注释颜色
+	stringstyle = \color{red!100},          % 字符串颜色
+	frame = shadowbox,                  % 用（带影子效果）方框框住代码块
+	framexleftmargin=-1.7cm,				%伸缩代码块左边框
+	xleftmargin=-1.5cm,					%改变代码块左边框的位置
+	numbersep=-1.5cm,						%改变行号数字距离代码的相对位置
+	tabsize=4,
+	captionpos=t,
+	showspaces = false,                 % 不显示空格
+	columns = fullflexible,             % 字间距固定
+	%escapeinside={<@}{@>}              % 特殊自定分隔符：<@可以自己加颜色@>
+	morekeywords = {as},                % 自加新的关键字（必须前后都是空格）
+	deletendkeywords = {compile}        % 删除内定关键字；删除错误标记的关键字用deletekeywords删！
+}
+%%%%%%%%%创建目录命令，把这些命令放到document中去
+%\pdfbookmark{Book Cover}{title} 	%创建封面pdf标签；第一个{}参数是pdf标签的名字，第二个{}参数用于hyperlink，
+%\maketitle							%显示封面
+%\thispagestyle{empty}				%封面取消页码
+%\frontmatter						%页码使用罗马字母
+%\chapter*{Preface}					%前言
+%\addcontentsline{toc}{chapter}{Preface}  %在目录中增加前言的跳转，在PDF中实现跳转
+%\cleardoublepage				 	%消除一张空白页，为了在pdf中实现目录的跳转
+%\pdfbookmark{\contentsname}{toc} 	%创建目录pdf标签
+%\tableofcontents				  	%生成目录
+%\mainmatter						%页码使用拉丁数字
+%\include{正文}
+%\appendix							  %增加附录
+%\include{Appendix/Appendix}
+
+%\bibliographystyle{xxx}			
+	%声明文献格式。可调用的参数为
+	%plain，按字母的顺序排列，比较次序为作者、年度和标题；
+	%unsrt，样式同plain，只是按照引用的先后排序；
+	%alpha，用作者名首字母+年份后两位作标号，以字母顺序排序；
+	%abbrv，类似plain，将月份全拼改为缩写，更显紧凑；
+%\bibliography{ref}					%调用文献bib，注意bib文件名和路径名全部不能有空格；用\cite引用文献
+%在写bib的时候用\href{xx}实现网页的跳转；在哪里用\href，哪里就会变红；标准是为{\href{xxx}{标红文字}}
+%\addcontentsline{toc}{chapter}{Reference} %PDF中增加Reference的跳转
+%%%%%%%%%
+
+%%%%%%%
+\usepackage{simpler-wick,tikz-feynman} %Wick收缩
+%关于wick的使用方法：代码如下
+	%	
+	%	\wick{
+	%		\c1 k, \c2 k'   %c1,c2是第1，2个收缩的标志，如果只有一个收缩的话，两个收缩要在不同行。
+	%		\vert
+	%		\overline{\c1 \psi}_x \psi_x \overline{\psi}_y \c2 \psi_y  %overline 是比较长的上滑线，c1,c2是和这个元素收缩
+	%		\vert
+	%		p, p'
+	%	}
+	%	
+%可能会用到的一些命令
+%\textsuperscript{xx}			%用于实现4^th这种效果；
